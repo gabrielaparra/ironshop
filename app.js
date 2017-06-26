@@ -28,8 +28,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
+//--------------ROUTES------------------------------------
+
 const index = require('./routes/index');
 app.use('/', index);
+
+const productRoutes = require('./routes/product-routes.js');
+app.use('/', productRoutes);
+
+//--------------------------------------------------------
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

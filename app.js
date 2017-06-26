@@ -6,6 +6,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/ironshop');
+                // use ironshop as the database
 
 const app = express();
 

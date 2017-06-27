@@ -37,6 +37,15 @@ router.post('/products', (req, res, next) => {
     imageUrl: req.body.productImageUrl,
     description: req.body.productDescription
   });
+
+  theProduct.save((err) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    //if save is successful, redirect to a URL 
+    res.redirect('/products');
+  });
 });
 
 module.exports = router;

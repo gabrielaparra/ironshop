@@ -6,22 +6,23 @@
       <h3> <%= product.name %> </h3>
       <p> $<%= product.price %> </p>
 
-      <a href="/products/details?myId=<%= product._id %>">
+      <a href="/products/<%= product._id %>">
         View details
       </a>
       <br>
 
-      <a href="/products/edit?myId=<%= product._id %>">
+      <a href="/products/<%= product._id %>/edit">
         Edit Product
       </a>
       <br>
 
-      <a href="/products/delete?myId=<%= product._id %>">
+      <!-- If we want to add 'delete' as a link instead of a button -->
+      <!-- <a href="/products/<%= product._id %>/delete">
         Delete Product
       </a>
-      <br>
+      <br> -->
 
-      <form action="/products/delete?myId=<%= product._id %>"
+      <form action="/products/<%= product._id %>/delete"
             method="post">
             <button> Delete </button>
       </form>

@@ -49,11 +49,11 @@ router.post('/products', (req, res, next) => {
   });
 });
 
-router.get('/products/details', (req, res, next) => {
-  //products/details?myId=...
 
+router.get('/products/:myId', (req, res, next) => {
   ProductModel.findById(
-    req.query.myId,           //1st arg -> the ID to find in the DB
+    req.params.myId,           //1st arg -> the ID to find in the DB
+    //Params is used to show a URL like this /products/j1817492 (product ID)
     (err, productFromDb) => {    //2nd arg -> callback
       if (err) {
         next(err);
@@ -68,9 +68,9 @@ router.get('/products/details', (req, res, next) => {
 });
 
 // STEP #1 of form submission for UPDATING a product
-router.get('/products/edit', (req, res, next) => {
+router.get('/products/:myId/edit', (req, res, next) => {
   ProductModel.findById(
-    req.query.myId,             //1st arg -> the ID to find in the DB
+    req.params.myId,             //1st arg -> the ID to find in the DB
     (err, productFromDb) => {   //2nd arg -> callback
       if (err) {
         //use next() to skup to the ERROR page
@@ -85,9 +85,9 @@ router.get('/products/edit', (req, res, next) => {
 });
 
 // STEP #2 of form submission for UPDATING a product
-router.post('/products/update', (req, res, next) => {
+router.post('/products/:myId/update', (req, res, next) => {
   ProductModel.findByIdAndUpdate(
-    req.query.myId,              //1st arg -> id of document to update
+    req.params.myId,              //1st arg -> id of document to update
     {                            //2nd arg -> object fields to update
       name: req.body.productName,
       price: req.body.productPrice,
@@ -100,16 +100,16 @@ router.post('/products/update', (req, res, next) => {
         next(err);
         return;
       }
-      res.redirect('/products/details?myId=' + productFromDb._id);
+      res.redirect('/products/' + productFromDb._id);
       //every time there's a successful post we must redirect
     }
   );
 });
 
 // Delete from a LINK (GET)
-router.get('/products/delete', (req, res, next) => {
+router.get('/products/:myId/delete', (req, res, next) => {
   ProductModel.findByIdAndRemove(
-    req.query.myId,
+    req.params.myId,
     (err, productFromDb) => {
       if (err) {
         next(err);
@@ -121,9 +121,9 @@ router.get('/products/delete', (req, res, next) => {
 });
 
 // Delete from a FORM BUTTON (POST)
-router.post('/products/delete', (req, res, next) => {
+router.post('/products/:myId/delete', (req, res, next) => {
   ProductModel.findByIdAndRemove(
-    req.query.myId,
+    req.params.myId,
     (err, productFromDb) => {
       if (err) {
         next(err);

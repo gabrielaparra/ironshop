@@ -5,3 +5,13 @@
 <img src="<%= productDetails.imageUrl %>">
 <p> $<%= productDetails.price %> </p>
 <p> <%= productDetails.description %> </p>
+
+<a href="/products/<%= productDetails._id %>/edit">
+  Edit Product
+</a>
+<br>
+
+<form action="/products/<%= productDetails._id %>/delete"
+      method="post">
+      <button> Delete </button>
+</form>

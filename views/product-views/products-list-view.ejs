@@ -5,6 +5,10 @@
     <li>
       <h3> <%= product.name %> </h3>
       <p> $<%= product.price %> </p>
+      <a href="/product/details?myId=<%= product._id %>">
+        View details
+      </a>
+      <br>
     </li>
   <% }) %>
 </ul>

@@ -43,9 +43,28 @@ router.post('/products', (req, res, next) => {
       next(err);
       return;
     }
-    //if save is successful, redirect to a URL 
+    //if save is successful, redirect to a URL
     res.redirect('/products');
+    //if we don't redirect we can refresh and duplicate the data
   });
+});
+
+router.get('/products/details', (req, res, next) => {
+  //products/details?myId=...
+
+  ProductModel.findById(
+    req.query.myId,           //1st arg -> the ID to find in the DB
+    (err, productFromDb) => {    //2nd arg -> callback
+      if (err) {
+        next(err);
+        return;
+      }
+
+      res.locals.productDetails = productFromDb;
+
+      res.render('product-views/product-details-view.ejs');
+    }
+  );
 });
 
 module.exports = router;

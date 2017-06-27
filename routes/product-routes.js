@@ -106,4 +106,32 @@ router.post('/products/update', (req, res, next) => {
   );
 });
 
+// Delete from a LINK (GET)
+router.get('/products/delete', (req, res, next) => {
+  ProductModel.findByIdAndRemove(
+    req.query.myId,
+    (err, productFromDb) => {
+      if (err) {
+        next(err);
+        return;
+      }
+      res.redirect('/products');
+    }
+  );
+});
+
+// Delete from a FORM BUTTON (POST)
+router.post('/products/delete', (req, res, next) => {
+  ProductModel.findByIdAndRemove(
+    req.query.myId,
+    (err, productFromDb) => {
+      if (err) {
+        next(err);
+        return;
+      }
+      res.redirect('/products');
+    }
+  );
+});
+
 module.exports = router;

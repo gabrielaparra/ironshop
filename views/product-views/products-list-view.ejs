@@ -5,6 +5,7 @@
     <li>
       <h3> <%= product.name %> </h3>
       <p> $<%= product.price %> </p>
+
       <a href="/products/details?myId=<%= product._id %>">
         View details
       </a>
@@ -14,6 +15,16 @@
         Edit Product
       </a>
       <br>
+
+      <a href="/products/delete?myId=<%= product._id %>">
+        Delete Product
+      </a>
+      <br>
+
+      <form action="/products/delete?myId=<%= product._id %>"
+            method="post">
+            <button> Delete </button>
+      </form>
     </li>
   <% }) %>
 </ul>

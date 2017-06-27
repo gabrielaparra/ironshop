@@ -8,7 +8,7 @@ const productSchema = new Schema({
   description: { type: String }
 });
 
-const Product = mongoose.model('Product', productSchema);
+const ProductModel = mongoose.model('Product', productSchema);
 
 //Ironshop is the database,
 //Product is the model
@@ -16,4 +16,4 @@ const Product = mongoose.model('Product', productSchema);
 //collection name is automatically determined by mongoose
 //by turning the model name into plural
 
-module.exports = Product;
+module.exports = ProductModel;

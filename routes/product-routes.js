@@ -1,9 +1,12 @@
 const express = require('express');
-const Product = require('../models/product-model.js');
+const ProductModel = require('../models/product-model.js');
 const router = express.Router();
 
 router.get('/products', (req, res, next) => {
-  Product.find((err, productResults) => {
+  ProductModel.find(
+    // { price: { $gt: 10 } },
+    // { name: 1, price: 1, _id: 0 },
+    (err, productResults) => {
     if (err) {
       //use next() to skip to the ERROR page
       next(err);
@@ -15,6 +18,7 @@ router.get('/products', (req, res, next) => {
     // the views folder
     res.render('product-views/products-list-view.ejs', {
       productsAndStuff: productResults
+      // transfer of information to the view 
     });
   });
 });

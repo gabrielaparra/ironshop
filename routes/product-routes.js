@@ -67,4 +67,21 @@ router.get('/products/details', (req, res, next) => {
   );
 });
 
+// STEP #1 of form submission for UPDATING a product
+router.get('/products/edit', (req, res, next) => {
+  ProductModel.findById(
+    req.query.myId,             //1st arg -> the ID to find in the DB
+    (err, productFromDb) => {   //2nd arg -> callback
+      if (err) {
+        //use next() to skup to the ERROR page
+        next(err);
+        return;
+      }
+      res.locals.productDetails = productFromDb;
+
+      res.render('product-views/edit-product-view.ejs');
+    }
+  );
+});
+
 module.exports = router;

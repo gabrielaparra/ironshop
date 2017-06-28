@@ -3,8 +3,18 @@ const Schema = mongoose.Schema;
 const ReviewModel = require('./review-model.js');
 
 const productSchema = new Schema({
-  name: { type: String },
-  price: { type: Number, default: 1 },
+  name: {
+    type: String,
+    required: true,
+    minlength: 3,   //minlength & maxlength for strings ONLY
+    maxlength: 25
+  },
+  price: {
+    type: Number,
+    default: 1,
+    min: 0,       //min & max for numbers ONLY
+    max: 9999999
+  },
   imageUrl: { type: String, default: 'images/product.gif' },
   description: { type: String },
   //Add a field inside of the product document called 'reviews'

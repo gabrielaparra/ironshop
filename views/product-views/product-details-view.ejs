@@ -6,10 +6,27 @@
 <p> $<%= productDetails.price %> </p>
 <p> <%= productDetails.description %> </p>
 
-<a href="/products/<%= productDetails._id %>/reviews/new">
-  Review This Product
-</a>
-<br>
+<hr>
+<section>
+  <h3> Reviews </h3>
+  <ul>
+    <% productDetails.reviews.forEach((review) => { %>
+      <li>
+        <h4> <%= review.author %> </h4>
+        <p> <%= review.stars %> </p>
+        <p> <%= review.content %> </p>
+      </li>
+    <% }) %>
+  </ul>
+
+  <a href="/products/<%= productDetails._id %>/reviews/new">
+    Review This Product
+  </a>
+  <br>
+</section>
+<hr>
+
+
 
 <a href="/products/<%= productDetails._id %>/edit">
   Edit This Product

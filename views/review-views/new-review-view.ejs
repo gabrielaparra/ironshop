@@ -2,7 +2,7 @@
 
 <p> Write a review for <i> <%= productDetails.name %> </i> </p>
 
-<form action="/products/<%= productDetails._id %>" method="post">
+<form action="/products/<%= productDetails._id %>/reviews" method="post">
   <label for="author-name"> Your name: </label>
   <input id="author-name" type="text" name="reviewAuthor">
   <br>
@@ -12,7 +12,7 @@
   <br>
 
   <label for="content-input"> Comments: </label>
-  <textarea id="content-input" type="text" name="reviewStars">
+  <textarea id="content-input" type="text" name="reviewContent">
   </textarea>
   <br>
 

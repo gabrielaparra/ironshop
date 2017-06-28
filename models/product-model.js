@@ -6,13 +6,17 @@ const productSchema = new Schema({
   name: {
     type: String,
     required: true,
-    minlength: 3,   //minlength & maxlength for strings ONLY
+    minlength: [ 3, 'Name must be at least 3 characters long' ],
+    //Customizing the validation error message  ^^^^^
+    //minlength & maxlength for strings ONLY
     maxlength: 25
   },
   price: {
     type: Number,
     default: 1,
-    min: 0,       //min & max for numbers ONLY
+    required: true,
+    min: [ 0, 'Price cannot be less than $0' ],
+    //min & max for numbers ONLY
     max: 9999999
   },
   imageUrl: { type: String, default: 'images/product.gif' },

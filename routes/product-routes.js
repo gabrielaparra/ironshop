@@ -49,9 +49,12 @@ router.post('/products', (req, res, next) => {
     //possible validation errors
     if (err && theProduct.errors) {
       // create view variables with the error messages
-      res.locals.validationErrors = theProduct.errors;
+      // res.locals.validationErrors = theProduct.errors;
       // display the form again
-      res.render('product-views/new-product-view.ejs');
+      res.render('product-views/new-product-view.ejs', {
+        nameValidationError: theProduct.errors.name,
+        priceValidationError: theProduct.errors.price
+      });
       return;
     }
     //if save is successful, redirect to a URL

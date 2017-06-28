@@ -1,9 +1,18 @@
 <h2> Add a Product </h2>
 
 <form action="/products" method="post">
+  <% if (typeof nameValidationError === 'object') { %>
+    <p class="error"> <%= nameValidationError.message %> </p>
+  <% } %>
+  <!-- display a message to let the user know of bad input  -->
+
   <label for="product-name"> Product Name: </label>
   <input id="product-name" type="text" name="productName">
   <br>
+
+  <% if (typeof priceValidationError === 'object') { %>
+    <p class="error"> <%= priceValidationError.message %> </p>
+  <% } %>
 
   <label for="product-price"> Product Price: </label>
   <input id="product-price" type="number" step="0.01" name="productPrice">
@@ -18,5 +27,5 @@
   </textarea>
   <br>
 
-  <button> Submit </button>
+  <button> Add This Product </button>
 </form>

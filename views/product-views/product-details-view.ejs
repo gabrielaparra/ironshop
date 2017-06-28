@@ -6,8 +6,13 @@
 <p> $<%= productDetails.price %> </p>
 <p> <%= productDetails.description %> </p>
 
+<a href="/products/<%= productDetails._id %>/reviews/new">
+  Review This Product
+</a>
+<br>
+
 <a href="/products/<%= productDetails._id %>/edit">
-  Edit Product
+  Edit This Product
 </a>
 <br>
 

@@ -6,7 +6,12 @@ const productSchema = new Schema({
   name: { type: String },
   price: { type: Number, default: 1 },
   imageUrl: { type: String, default: 'images/product.gif' },
-  description: { type: String }
+  description: { type: String },
+  //Add a field inside of the product document called 'reviews'
+  //The field is an array of ReviewModel objects, each with
+  //content, stars, and author
+  reviews: [ ReviewModel.schema ]
+  //schema of the ReviewModel, different from the Schema const
 });
 
 const ProductModel = mongoose.model('Product', productSchema);

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ReviewModel = require('./review-model.js');
 
 const productSchema = new Schema({
   name: { type: String },

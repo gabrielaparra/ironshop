@@ -36,6 +36,7 @@ app.use('/', index);
 const productRoutes = require('./routes/product-routes.js');
 app.use('/', productRoutes);
 
+
 //--------------------------------------------------------
 
 // catch 404 and forward to error handler

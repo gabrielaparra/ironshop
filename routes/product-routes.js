@@ -39,8 +39,19 @@ router.post('/products', (req, res, next) => {
   });
 
   theProduct.save((err) => {
-    if (err) {
+    //if there's an error that's NOT a validation error
+    if (err && theProduct.errors === undefined) {
       next(err);
+      return;
+    }
+
+    //theProduct.errors contains generic messages related to the
+    //possible validation errors
+    if (err && theProduct.errors) {
+      // create view variables with the error messages
+      res.locals.validationErrors = theProduct.errors;
+      // display the form again
+      res.render('product-views/new-product-view.ejs');
       return;
     }
     //if save is successful, redirect to a URL
